@@ -13,13 +13,15 @@ namespace MyBlog.Entities.Concrete
         public string AuthorName { get; set; }
         public string Description { get; set; }
 
-        public DateTime PostedTime { get; set; }
+        public DateTime PostedTime { get; set; } = DateTime.Now;
 
 
         public int? ParentCommentId { get; set; }
         public Comment ParentComment { get; set; }
 
+        public Blog Blog { get; set; }
 
+        public int BlogId { get; set; }
         public List<Comment> SubComments { get; set; }
 
 

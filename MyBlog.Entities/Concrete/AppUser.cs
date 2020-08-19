@@ -12,6 +12,8 @@ namespace MyBlog.Entities.Concrete
 
         public string Password { get; set; }
 
+        public string EMail { get; set; }
+
         public string Name { get; set; }
 
         public string Surname { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MyBlog.DataAccess.Mapping;
 using MyBlog.Entities.Concrete;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,14 @@ namespace MyBlog.DataAccess.Concrete.EntityFrameworkCore.Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("server=DESKTOP-3VB3SSC\\MSSQLSERVERLAST;database=MyBlog;integrated security=true");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new AppUserMap());
+            modelBuilder.ApplyConfiguration(new BlogMap());
+            modelBuilder.ApplyConfiguration(new CategoryMap());
+            modelBuilder.ApplyConfiguration(new CategoryBlogMap());
+            modelBuilder.ApplyConfiguration(new CommentMap());
         }
         public DbSet<Blog> Blogs { get; set; }
 
