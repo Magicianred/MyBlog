@@ -21,6 +21,13 @@ namespace MyBlog.DataAccess.Concrete.EntityFrameworkCore.Repositories
            await context.SaveChangesAsync();
         }
 
+        public async Task<T> FindAsync(int id)
+        {
+            using var context = new BlogContext();
+            
+            return await context.FindAsync<T>(id);
+        }
+
         public async Task<List<T>> GetAllAsync()
         {
             using var context = new BlogContext();

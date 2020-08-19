@@ -15,6 +15,7 @@ namespace MyBlog.DataAccess.Interfaces
         Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, TKey>> keySelector);
         Task<T> GetAsync(Expression<Func<T,bool>>filter);
 
+        Task<T> FindAsync(int id);
         Task AddAsync(T entity);
 
         Task UpdateAsync(T entity);

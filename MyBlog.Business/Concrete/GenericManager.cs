@@ -21,40 +21,18 @@ namespace MyBlog.Business.Concrete
             await _genericDal.AddAsync(entity);
         }
 
+        public async Task<T> FindById(int id)
+        {
+            return await _genericDal.FindAsync(id);
+        }
+
         public async Task<List<T>> GetAllAsync()
         {
             return await _genericDal.GetAllAsync();
         }
 
-        public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter)
-        {
-            if (filter == null)
-            {
-               return await _genericDal.GetAllAsync();
-            }
-            else
-              return  await _genericDal.GetAllAsync(filter);
-        }
 
-        public async Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, bool>> filter, Expression<Func<T, TKey>> keySelector)
-        {
-            if (filter == null)
-            {
-                return await _genericDal.GetAllAsync(keySelector);
-            }
-            else
-                return await _genericDal.GetAllAsync(filter, keySelector);
-        }
-
-        public async Task<List<T>> GetAllAsync<TKey>(Expression<Func<T, TKey>> keySelector)
-        {
-            return await _genericDal.GetAllAsync(keySelector);
-        }
-
-        public async Task<T> GetAsync(Expression<Func<T, bool>> filter)
-        {
-            return await _genericDal.GetAsync(filter);
-        }
+      
 
         public async Task RemoveAsync(T entity)
         {
